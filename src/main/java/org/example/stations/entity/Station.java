@@ -15,15 +15,14 @@ public class Station {
     public Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "power.id")
-    public Power power;
-
-    @ManyToOne
     @JoinColumn(name = "sim.id")
     public Sim sim;
 
     @Column (name = "isur_id")
     public Integer isurId;
+
+    @Column(name = "power")
+    public String power;
 
     @Column (name = "mac")
     public String mac;
