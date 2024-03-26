@@ -1,12 +1,17 @@
 package org.example.stations.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table (name= "station")
+@Getter
+@Setter
 public class Station {
 
     @Id
@@ -63,7 +68,7 @@ public class Station {
     @Column (name = "comment")
     public String comment;
 
-    @CreationTimestamp
+    @CreationTimestamp(source = SourceType.DB)
     @Column (name = "creation_time")
     public LocalDateTime creationTime;
 

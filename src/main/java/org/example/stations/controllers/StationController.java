@@ -1,7 +1,43 @@
 package org.example.stations.controllers;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.example.stations.entity.Station;
+import org.example.stations.services.StationCRUDService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
+@RequestMapping("/stations")
 public class StationController {
+    private final StationCRUDService stationService;
+
+    public StationController(StationCRUDService stationService) {
+        this.stationService = stationService;
+    }
+
+    @GetMapping("/{id}")
+    public Station getStationById(@PathVariable Integer id) {
+        return stationService.getById(id);
+    }
+
+    @GetMapping
+    public Collection<Station> getAllStations() {
+        return stationService.getAll();
+    }
+
+    @PostMapping
+    public void createStation(@RequestBody Station station) {
+        stationService.create(station);
+    }
+
+    @PutMapping("/{id}")
+    public void updateStation(@PathVariable Integer id, @RequestBody Station station) {
+        station.setId(id);
+        stationService.update(station);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStation(@PathVariable Integer id) {
+        stationService.delete(id);
+    }
 }
