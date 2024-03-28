@@ -17,12 +17,12 @@ public class StationController {
     }
 
     @GetMapping
-    public Collection<Station> getStations(){
+    public Collection<Station> getStations() {
         return stationService.getAll();
     }
 
     @GetMapping ("/{id}")
-    public Station getStationById(@PathVariable Integer id){
+    public Station getStationById(@PathVariable Integer id) {
         return stationService.getById(id);
     }
 
@@ -32,13 +32,13 @@ public class StationController {
     }
 
     @PutMapping ("/{id}")
-    public void updateStation(@PathVariable Integer id, @RequestBody Station station){
+    public void updateStation(@PathVariable Integer id, @RequestBody Station station) {
         station.setId(id);
         stationService.update(station);
     }
 
     @DeleteMapping ("/{id}")
-    public void deleteStation(@PathVariable Integer id){
+    public void deleteStation(@PathVariable Integer id) {
         stationService.delete(id);
     }
 

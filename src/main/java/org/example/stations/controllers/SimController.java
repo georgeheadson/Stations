@@ -17,12 +17,12 @@ public class SimController {
     }
 
     @GetMapping
-    public Collection<Sim> getSims(){
+    public Collection<Sim> getSims() {
         return simService.getAll();
     }
 
     @GetMapping ("/{id}")
-    public Sim getSimById(@PathVariable Integer id){
+    public Sim getSimById(@PathVariable Integer id) {
         return simService.getById(id);
     }
 
@@ -32,13 +32,13 @@ public class SimController {
     }
 
     @PutMapping ("/{id}")
-    public void updateSim(@PathVariable Integer id, @RequestBody Sim sim){
+    public void updateSim(@PathVariable Integer id, @RequestBody Sim sim) {
         sim.setId(id);
         simService.update(sim);
     }
 
     @DeleteMapping ("/{id}")
-    public void deleteSim(@PathVariable Integer id){
+    public void deleteSim(@PathVariable Integer id) {
         simService.delete(id);
     }
 

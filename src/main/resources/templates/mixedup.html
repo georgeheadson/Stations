@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Mixedup Page</title>
+</head>
+<body>
+
+<h3 th:utext="${listTitle}"></h3>
+
+<div class="col-xs-12">
+    <ul th:each="item: ${items}">
+        <input type="checkbox"/>
+        <li th:text="${item}"></li>
+    </ul>
+</div>
+</body>
+</html>
