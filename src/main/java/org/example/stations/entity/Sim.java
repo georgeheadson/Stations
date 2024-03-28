@@ -1,9 +1,13 @@
 package org.example.stations.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table (name = "sim")
+@Getter
+@Setter
 public class Sim {
 
     @Id

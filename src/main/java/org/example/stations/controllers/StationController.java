@@ -9,20 +9,21 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/stations")
 public class StationController {
+
     private final StationCRUDService stationService;
 
-    public StationController(StationCRUDService stationService) {
+    public StationController (StationCRUDService stationService) {
         this.stationService = stationService;
     }
 
-    @GetMapping("/{id}")
-    public Station getStationById(@PathVariable Integer id) {
-        return stationService.getById(id);
+    @GetMapping
+    public Collection<Station> getStations(){
+        return stationService.getAll();
     }
 
-    @GetMapping
-    public Collection<Station> getAllStations() {
-        return stationService.getAll();
+    @GetMapping ("/{id}")
+    public Station getStationById(@PathVariable Integer id){
+        return stationService.getById(id);
     }
 
     @PostMapping
@@ -30,14 +31,15 @@ public class StationController {
         stationService.create(station);
     }
 
-    @PutMapping("/{id}")
-    public void updateStation(@PathVariable Integer id, @RequestBody Station station) {
+    @PutMapping ("/{id}")
+    public void updateStation(@PathVariable Integer id, @RequestBody Station station){
         station.setId(id);
         stationService.update(station);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteStation(@PathVariable Integer id) {
+    @DeleteMapping ("/{id}")
+    public void deleteStation(@PathVariable Integer id){
         stationService.delete(id);
     }
+
 }

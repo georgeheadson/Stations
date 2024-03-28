@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
 
@@ -63,12 +64,13 @@ public class Station {
     public String replaceReason;
 
     @Column (name = "type")
+    @Enumerated(EnumType.STRING)
     public StationType type;
 
     @Column (name = "comment")
     public String comment;
 
-    @CreationTimestamp(source = SourceType.DB)
+    @CreationTimestamp (source = SourceType.DB)
     @Column (name = "creation_time")
     public LocalDateTime creationTime;
 

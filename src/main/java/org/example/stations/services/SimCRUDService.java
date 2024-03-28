@@ -1,35 +1,35 @@
 package org.example.stations.services;
 
 import lombok.RequiredArgsConstructor;
-import org.example.stations.entity.Station;
-import org.example.stations.repositories.StationRepository;
+import org.example.stations.entity.Sim;
+import org.example.stations.repositories.SimRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 @RequiredArgsConstructor
 @Service
-public class StationCRUDService implements CRUDService <Station> {
+public class SimCRUDService implements CRUDService <Sim> {
 
-    private final StationRepository repository;
+    private final SimRepository repository;
 
     @Override
-    public Station getById(Integer id) {
+    public Sim getById(Integer id) {
         return repository.findById(id).orElseThrow();
     }
 
     @Override
-    public Collection<Station> getAll() {
+    public Collection<Sim> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public void create(Station item) {
+    public void create(Sim item) {
         repository.save(item);
     }
 
     @Override
-    public void update(Station item) {
+    public void update(Sim item) {
         repository.save(item);
     }
 
