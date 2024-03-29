@@ -18,7 +18,7 @@ public class DefaultController {
      */
     @RequestMapping("/")
     public String index() {
-        return "redirect:/mixedup";
+        return "redirect:/stations";
     }
 
     @RequestMapping("/mixedup")

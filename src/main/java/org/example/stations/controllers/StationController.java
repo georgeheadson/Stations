@@ -3,8 +3,11 @@ package org.example.stations.controllers;
 import org.example.stations.entity.Station;
 import org.example.stations.services.StationCRUDService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/stations")
@@ -17,8 +20,18 @@ public class StationController {
     }
 
     @GetMapping
-    public Collection<Station> getStations() {
-        return stationService.getAll();
+    public ModelAndView getStations() {
+        List<String> items = new ArrayList<String>();
+        for (Station station : stationService.getAll()) {
+            items.add(station.getName() + " - " + station.getMac());
+        }
+
+        ModelAndView retVal = new ModelAndView();
+        retVal.setViewName("stations");
+        retVal.addObject("items", items);
+
+        return retVal;
+        //return stationService.getAll();
     }
 
     @GetMapping ("/{id}")
