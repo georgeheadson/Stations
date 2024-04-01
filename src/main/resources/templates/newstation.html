@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Stations</title>
+</head>
+<body>
+
+
+<div class="col-xs-12">
+    <form method="post" th:object="${station}">
+        <input type="text" th:field="*{name}" th:value="${station.name}"/><br>
+        <input type="text" th:field="*{mac}" th:value="${station.mac}"/><br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

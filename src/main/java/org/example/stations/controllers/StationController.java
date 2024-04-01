@@ -1,7 +1,10 @@
 package org.example.stations.controllers;
 
+import org.example.stations.StationsApplication;
 import org.example.stations.entity.Station;
 import org.example.stations.services.StationCRUDService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/stations")
 public class StationController {
 
@@ -20,39 +23,43 @@ public class StationController {
     }
 
     @GetMapping
-    public ModelAndView getStations() {
-        List<String> items = new ArrayList<String>();
-        for (Station station : stationService.getAll()) {
-            items.add(station.getName() + " - " + station.getMac());
-        }
+    public String getStations(Model model) {
+        model.addAttribute("stations", stationService.getAll());
 
-        ModelAndView retVal = new ModelAndView();
-        retVal.setViewName("stations");
-        retVal.addObject("items", items);
-
-        return retVal;
-        //return stationService.getAll();
+        return "stations";
     }
 
     @GetMapping ("/{id}")
-    public Station getStationById(@PathVariable Integer id) {
-        return stationService.getById(id);
+    public String getStationById(@PathVariable Integer id, Model model) {
+        model.addAttribute("station", stationService.getById(id));
+
+        return "station";
     }
 
-    @PostMapping
-    public void createStation(@RequestBody Station station) {
-        stationService.create(station);
-    }
-
-    @PutMapping ("/{id}")
-    public void updateStation(@PathVariable Integer id, @RequestBody Station station) {
+    @PostMapping ("/{id}")
+    public String updateStation(@PathVariable Integer id, @ModelAttribute("station") Station station) {
         station.setId(id);
         stationService.update(station);
+        return "redirect:/stations";
     }
 
-    @DeleteMapping ("/{id}")
-    public void deleteStation(@PathVariable Integer id) {
+    @GetMapping ("/new")
+    public String createNewStation(Model model) {
+        Station station = new Station();
+        model.addAttribute("station", station);
+        return "newstation";
+    }
+
+    @PostMapping ("/new")
+    public String createStation(@ModelAttribute("station") Station station) {
+        stationService.create(station);
+        return "redirect:/stations";
+    }
+
+    @GetMapping ("/delete/{id}")
+    public String deleteStation(@PathVariable Integer id) {
         stationService.delete(id);
+        return "redirect:/stations";
     }
 
 }

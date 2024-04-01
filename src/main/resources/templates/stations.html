@@ -5,13 +5,26 @@
     <title>Stations</title>
 </head>
 <body>
-
-
-<div class="col-xs-12">
-    <ul th:each="item: ${items}">
-        <input type="checkbox"/>
-        <li th:text="${item}"></li>
-    </ul>
+<a th:href="@{stations/new}">Add Station</a>
+<table style="width:80%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mac</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="station: ${stations}">
+        <td th:text="${station.name}"></td>
+        <td th:text="${station.mac}"></td>
+        <td>
+            <a th:href="@{stations/{id}(id=${station.id})}">Update</a> &nbsp;&nbsp;
+            <a th:href="@{stations/delete/{id}(id=${station.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </div>
 </body>
 </html>

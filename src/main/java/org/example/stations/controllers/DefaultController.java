@@ -21,21 +21,4 @@ public class DefaultController {
         return "redirect:/stations";
     }
 
-    @RequestMapping("/mixedup")
-    public ModelAndView mixedup() {
-        List<String> items = new ArrayList<String>();
-        items.add("Simple Item 1");
-        items.add("Simple Item 2");
-        items.add("Simple Item 3");
-        items.add("Simple Item 4");
-        items.add("Simple Item 5");
-
-        ModelAndView retVal = new ModelAndView();
-        retVal.setViewName("mixedup");
-        retVal.addObject("listTitle", "<span style=\"color: green;\">A Test Unordered List</span>");
-        retVal.addObject("items", items);
-
-        return retVal;
-    }
-
 }
