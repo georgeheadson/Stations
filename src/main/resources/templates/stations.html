@@ -3,21 +3,50 @@
 <head>
     <meta charset="utf-8">
     <title>Stations</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 <a th:href="@{stations/new}">Add Station</a>
-<table style="width:80%">
+<table style="width:80%" class="table ewTable">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Mac</th>
-            <th>Delete</th>
+        <tr class="ewTableHeader">
+            <th>Название</th>
+            <th>MAC</th>
+            <th>ISUR ID</th>
+            <th>Привязка</th>
+            <th>Место установки</th>
+            <th>Дата установки</th>
+            <th>Тип</th>
+            <th>Программа</th>
+            <th>Площадка</th>
+            <th>Симкарта</th>
+            <th>Пользователь</th>
+            <th>Пароль</th>
+            <th>Координаты</th>
+            <th>Дата снятия</th>
+            <th>Причина снятия</th>
+            <th>Примечание</th>
+            <th>Операции</th>
         </tr>
     </thead>
     <tbody>
     <tr th:each="station: ${stations}">
         <td th:text="${station.name}"></td>
         <td th:text="${station.mac}"></td>
+        <td th:text="${station.isurId}"></td>
+        <td th:text="${station.power}"></td>
+        <td th:text="${station.place}"></td>
+        <td th:text="${station.placeDate}"></td>
+        <td th:text="${station.type}"></td>
+        <td th:text="${station.program}"></td>
+        <td th:text="${station.area}"></td>
+        <td th:text="${station.sim}"></td>
+        <td th:text="${station.username}"></td>
+        <td th:text="${station.password}"></td>
+        <td th:text="${station.coordinates}"></td>
+        <td th:text="${station.replaceDate}"></td>
+        <td th:text="${station.replaceReason}"></td>
+        <td th:text="${station.comment}"></td>
         <td>
             <a th:href="@{stations/{id}(id=${station.id})}">Update</a> &nbsp;&nbsp;
             <a th:href="@{stations/delete/{id}(id=${station.id})}">Delete</a>
