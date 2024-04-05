@@ -2,6 +2,7 @@ package org.example.stations.controllers;
 
 import org.example.stations.StationsApplication;
 import org.example.stations.entity.Station;
+import org.example.stations.entity.StationType;
 import org.example.stations.services.StationCRUDService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class StationController {
     @GetMapping ("/{id}")
     public String getStationById(@PathVariable Integer id, Model model) {
         model.addAttribute("station", stationService.getById(id));
+        model.addAttribute("stationTypeValues", StationType.values());
 
         return "station";
     }

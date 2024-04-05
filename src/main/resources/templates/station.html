@@ -3,17 +3,160 @@
 <head>
     <meta charset="utf-8">
     <title>Edit Station</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8088/css/style.css" />
 </head>
 <body>
-
-
-<div class="col-xs-12">
     <form method="post" th:object="${station}">
-        <input type="text" th:field="*{name}" th:value="${station.name}"/><br>
-        <input type="text" th:field="*{mac}" th:value="${station.mac}"/><br>
+        <table>
+            <tr>
+                <td>
+                    <label>Название:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{name}" th:value="${station.name}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>MAC:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{mac}" th:value="${station.mac}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>ISUR ID</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{isurId}" th:value="${station.isurId}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Zabbix ID</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{zabbixId}" th:value="${station.zabbixId}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Привязка:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{power}" th:value="${station.power}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Место установки:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{place}" th:value="${station.place}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Дата установки:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{placeDate}" th:value="${station.placeDate}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Тип:</label>
+                </td>
+                <td>
+                    <select name="example">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="-">Other</option>
+                    </select>
+                    <input type="text" name="other">
+
+                    <input type="text" name="stationTypes" list="stationTypeList" th:field="*{type}" th:value="${station.type}">
+                    <datalist id="stationTypeList">
+                        <option th:each="stationTypeValue: ${stationTypeValues}" th:value="${stationTypeValue.name}">
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Программа:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{program}" th:value="${station.program}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Площадка:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{area}" th:value="${station.area}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Симкарта:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{sim}" th:value="${station.sim}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Пользователь:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{username}" th:value="${station.username}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Пароль:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{password}" th:value="${station.password}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Координаты:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{coordinates}" th:value="${station.coordinates}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Дата снятия:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{replaceDate}" th:value="${station.replaceDate}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Причина снятия:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{replaceReason}" th:value="${station.replaceReason}"/><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Примечание:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{comment}" th:value="${station.comment}"/><br>
+                </td>
+            </tr>
+        </table>
         <button type="submit">Save</button>
     </form>
-</div>
+
 </body>
 </html>

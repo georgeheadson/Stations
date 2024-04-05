@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>БС</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="/../static/css/dataTables.css" />
+    <script src="/../static/js/dataTables.js"></script>
+    <script src="/../static/js/jquery-3.7.1.js"></script>
+    <script class="init">
+        dt_demo.init();
+        $(document).ready( function () {
+            $('#stationsTable').DataTable();
+        } );
+    </script></head>
 <body>
 <h1>Базовые станции</h1>
     <a href="/stations">Базовые станции</a>
+    <table>
+        <thead>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1111</td>
+                <td>21111</td>
+                <td>33333</td>
+            </tr>
+            <tr>
+                <td>1111</td>
+                <td>21111</td>
+                <td>33333</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -27,6 +27,9 @@ public class Station {
     @Column (name = "isur_id")
     public Integer isurId;
 
+    @Column (name = "zabbix_id")
+    public Integer zabbixId;
+
     @Column(name = "power")
     public String power;
 
