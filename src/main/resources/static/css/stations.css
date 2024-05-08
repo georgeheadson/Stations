@@ -1,29 +1,37 @@
-.table {
+table {
 	border: 1px solid #eee;
 	table-layout: fixed;
 	width: 100%;
 	margin-bottom: 20px;
-	font-size: 10px;
-	font-family: 'Arial', 'Verdana', sans-serif;
+	font-size: 12px;
+	font-family: "Arial", "Verdana", sans-serif;
 }
 
-.table th {
+th {
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
 
-.table td {
+td {
 	padding: 5px 10px;
 	border: 1px solid #eee;
 	text-align: left;
 }
 
-.table tbody tr:nth-child(odd) {
+tr:nth-child(odd) {
 	background: #fff;
 }
 
-.table tbody tr:nth-child(even) {
+tr:nth-child(even) {
 	background: #F7F7F7;
+}
+
+text {
+    max-width: auto;
+}
+
+select {
+    max-width: auto;
 }

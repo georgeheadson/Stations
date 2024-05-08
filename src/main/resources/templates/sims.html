@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Симкарты</title>
+    <link rel="stylesheet" type="text/css" href="/css/stations.css" />
+</head>
+<body>
+<a href="/sims/new">Новая симкарта</a> <br>
+<a href="/stations">Станции</a>
+<table id="stations>">
+    <thead>
+    <tr>
+        <th>ICCID</th>
+        <th>Телефон</th>
+        <th>IP</th>
+        <th>Оператор</th>
+        <th>APN</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sim: ${sims}">
+        <td th:text="${sim.iccid}"></td>
+        <td th:text="${sim.phone}"></td>
+        <td th:text="${sim.ip}"></td>
+        <td th:text="${sim.vendor}"></td>
+        <td th:text="${sim.apn}"></td>
+        <td>
+            <a th:href="@{sims/{id}(id=${sim.id})}">Update</a> &nbsp;&nbsp;
+            <a th:href="@{sims/delete/{id}(id=${sim.id})}" onclick="return confirm('Вы уверены, что нужно удалить?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

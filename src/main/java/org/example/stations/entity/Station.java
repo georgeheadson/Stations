@@ -6,7 +6,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -43,7 +45,8 @@ public class Station {
     public String place;
 
     @Column (name = "place_date")
-    public LocalDateTime placeDate;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    public LocalDate placeDate;
 
     @Column (name = "username")
     public String username;
@@ -61,7 +64,8 @@ public class Station {
     public String coordinates;
 
     @Column (name = "replace_date")
-    public LocalDateTime replaceDate;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    public LocalDate replaceDate;
 
     @Column (name = "replace_reason")
     public String replaceReason;

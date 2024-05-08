@@ -42,6 +42,7 @@ public class StationController {
     public String updateStation(@PathVariable Integer id, @ModelAttribute("station") Station station) {
         station.setId(id);
         stationService.update(station);
+
         return "redirect:/stations";
     }
 
@@ -49,18 +50,22 @@ public class StationController {
     public String createNewStation(Model model) {
         Station station = new Station();
         model.addAttribute("station", station);
+        model.addAttribute("stationTypeValues", StationType.values());
+
         return "newstation";
     }
 
     @PostMapping ("/new")
     public String createStation(@ModelAttribute("station") Station station) {
         stationService.create(station);
+
         return "redirect:/stations";
     }
 
     @GetMapping ("/delete/{id}")
     public String deleteStation(@PathVariable Integer id) {
         stationService.delete(id);
+
         return "redirect:/stations";
     }
 

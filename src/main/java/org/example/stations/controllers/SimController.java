@@ -1,12 +1,16 @@
 package org.example.stations.controllers;
 
 import org.example.stations.entity.Sim;
+import org.example.stations.entity.Station;
+import org.example.stations.entity.StationType;
 import org.example.stations.services.SimCRUDService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RestController
+@Controller
 @RequestMapping("/sims")
 public class SimController {
 
@@ -17,29 +21,48 @@ public class SimController {
     }
 
     @GetMapping
-    public Collection<Sim> getSims() {
-        return simService.getAll();
+    public String getSims(Model model) {
+        model.addAttribute("sims", simService.getAll());
+
+        return "sims";
     }
 
     @GetMapping ("/{id}")
-    public Sim getSimById(@PathVariable Integer id) {
-        return simService.getById(id);
+    public String getSimById(@PathVariable Integer id, Model model) {
+        model.addAttribute("sim", simService.getById(id));
+
+        return "sim";
     }
 
-    @PostMapping
-    public void createSim(@RequestBody Sim sim) {
-        simService.create(sim);
-    }
-
-    @PutMapping ("/{id}")
-    public void updateSim(@PathVariable Integer id, @RequestBody Sim sim) {
+    @PostMapping ("/{id}")
+    public String updateSim(@PathVariable Integer id, @ModelAttribute("sim") Sim sim) {
         sim.setId(id);
         simService.update(sim);
+
+        return "redirect:/sims";
     }
 
-    @DeleteMapping ("/{id}")
-    public void deleteSim(@PathVariable Integer id) {
-        simService.delete(id);
+    @GetMapping ("/new")
+    public String createNewSim(Model model) {
+        Sim sim = new Sim();
+        model.addAttribute("sim", sim);
+
+        return "newsim";
     }
+
+    @PostMapping ("/new")
+    public String createSim(@ModelAttribute("sim") Sim sim) {
+        simService.create(sim);
+
+        return "redirect:/sims";
+    }
+
+    @GetMapping ("/delete/{id}")
+    public String deleteSim(@PathVariable Integer id) {
+        simService.delete(id);
+
+        return "redirect:/sims";
+    }
+
 
 }

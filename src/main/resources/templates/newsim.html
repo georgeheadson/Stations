@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Новая симкарта</title>
+    <link rel="stylesheet" type="text/css" href="/css/stations.css" />
+</head>
+<body>
+<form method="post" th:object="${sim}">
+    <table>
+        <tr>
+            <td>
+                <label>ICCID:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{iccid}" th:value="${sim.iccid}"/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Телефон:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{phone}" th:value="${sim.phone}"/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>IP:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{ip}" th:value="${sim.ip}"/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Оператор:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{vendor}" th:value="${sim.vendor}"/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>APN:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{apn}" th:value="${sim.apn}"/><br>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>
